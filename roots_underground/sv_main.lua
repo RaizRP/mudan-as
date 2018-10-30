@@ -2,23 +2,23 @@ ESX = nil
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
-RegisterServerEvent('esx_mafiajob:handcuff')
-AddEventHandler('esx_mafiajob:handcuff', function(target)
-  TriggerClientEvent('esx_mafiajob:handcuff', target)
+RegisterServerEvent('esx_bikerjob:handcuff')
+AddEventHandler('esx_bikerjob:handcuff', function(target)
+  TriggerClientEvent('esx_bikerjob:handcuff', target)
 end)
 
-RegisterServerEvent('esx_mafiajob:drag')
-AddEventHandler('esx_mafiajob:drag', function(target)
+RegisterServerEvent('esx_bikerjob:drag')
+AddEventHandler('esx_bikerjob:drag', function(target)
   local _source = source
-  TriggerClientEvent('esx_mafiajob:drag', target, _source)
+  TriggerClientEvent('esx_bikerjob:drag', target, _source)
 end)
 
-RegisterServerEvent('esx_mafiajob:putInVehicle')
-AddEventHandler('esx_mafiajob:putInVehicle', function(target)
-  TriggerClientEvent('esx_mafiajob:putInVehicle', target)
+RegisterServerEvent('esx_bikerjob:putInVehicle')
+AddEventHandler('esx_bikerjob:putInVehicle', function(target)
+  TriggerClientEvent('esx_bikerjob:putInVehicle', target)
 end)
 
-RegisterServerEvent('esx_mafiajob:OutVehicle')
-AddEventHandler('esx_mafiajob:OutVehicle', function(target)
-    TriggerClientEvent('esx_mafiajob:OutVehicle', target)
+RegisterServerEvent('esx_bikerjob:OutVehicle')
+AddEventHandler('esx_bikerjob:OutVehicle', function(target)
+    TriggerClientEvent('esx_bikerjob:OutVehicle', target)
 end)
