@@ -6,9 +6,11 @@ version '0.1.0 beta'
 
 server_scripts {
 	'@es_extended/locale.lua',
+	'br.lua',
 	'sv_main.lua'
 }
 
 client_scripts {
-	'cl_main.lua'
+	'cl_main.lua',
+	'br.lua
 }
