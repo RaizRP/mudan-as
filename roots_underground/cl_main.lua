@@ -21,14 +21,14 @@ Citizen.CreateThread(function()
   end
 end)
 
-function OpenMafiaActionsMenu()
+function OpenBikerActionsMenu()
 
   ESX.UI.Menu.CloseAll()
 
   ESX.UI.Menu.Open(
-    'default', GetCurrentResourceName(), 'mafia_actions',
+    'default', GetCurrentResourceName(), 'biker_actions',
     {
-      title    = 'Mafia',
+      title    = 'Biker',
       align    = 'bottom-right',
       elements = {
         {label = _U('citizen_interaction'), value = 'citizen_interaction'},
@@ -64,19 +64,19 @@ function OpenMafiaActionsMenu()
               end
 
               if data2.current.value == 'handcuff' then
-                TriggerServerEvent('esx_mafiajob:handcuff', GetPlayerServerId(player))
+                TriggerServerEvent('esx_bikerjob:handcuff', GetPlayerServerId(player))
               end
 
               if data2.current.value == 'drag' then
-                TriggerServerEvent('esx_mafiajob:drag', GetPlayerServerId(player))
+                TriggerServerEvent('esx_bikerjob:drag', GetPlayerServerId(player))
               end
 
               if data2.current.value == 'put_in_vehicle' then
-                TriggerServerEvent('esx_mafiajob:putInVehicle', GetPlayerServerId(player))
+                TriggerServerEvent('esx_bikerjob:putInVehicle', GetPlayerServerId(player))
               end
 
               if data2.current.value == 'out_the_vehicle' then
-                  TriggerServerEvent('esx_mafiajob:OutVehicle', GetPlayerServerId(player))
+                  TriggerServerEvent('esx_bikerjob:OutVehicle', GetPlayerServerId(player))
               end
             else
               ESX.ShowNotification(_U('no_players_nearby'))
@@ -212,16 +212,16 @@ end
 
 
 
-   if IsControlPressed(0,  Keys['F6']) and PlayerData.job ~= nil and PlayerData.job.name == 'mafia' and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'mafia_actions') and (GetGameTimer() - GUI.Time) > 150 then
-     OpenMafiaActionsMenu()
+   if IsControlPressed(0,  Keys['F6']) and PlayerData.job ~= nil and PlayerData.job.name == 'biker' and not ESX.UI.Menu.IsOpen('default', GetCurrentResourceName(), 'biker_actions') and (GetGameTimer() - GUI.Time) > 150 then
+     OpenBikerActionsMenu()
      GUI.Time = GetGameTimer()
     end
 	
 	-- função search 
 	
 	function OpenBodySearchMenu(player)
-  TriggerServerEvent('esx_mafiajob:sendMsg', GetPlayerServerId(player), _U('being_searched'))
-  ESX.TriggerServerCallback('esx_mafiajob:getOtherPlayerData', function(data)
+  TriggerServerEvent('esx_bikerjob:sendMsg', GetPlayerServerId(player), _U('being_searched'))
+  ESX.TriggerServerCallback('esx_bikerjob:getOtherPlayerData', function(data)
 
     local elements = {}
 
@@ -298,8 +298,8 @@ end
 
 --função alema
 
-RegisterNetEvent('esx_mafiajob:handcuff')
-AddEventHandler('esx_mafiajob:handcuff', function()
+RegisterNetEvent('esx_bikerjob:handcuff')
+AddEventHandler('esx_bikerjob:handcuff', function()
 
   IsHandcuffed    = not IsHandcuffed;
   local playerPed = GetPlayerPed(-1)
@@ -333,8 +333,8 @@ end)
 
 --função drag
 
-RegisterNetEvent('esx_mafiajob:drag')
-AddEventHandler('esx_mafiajob:drag', function(cop)
+RegisterNetEvent('esx_bikerjob:drag')
+AddEventHandler('esx_bikerjob:drag', function(cop)
   TriggerServerEvent('esx:clientLog', 'starting dragging')
   IsDragged = not IsDragged
   CopPed = tonumber(cop)
@@ -342,8 +342,8 @@ end)
 
 -- colocar no veículo
 
-RegisterNetEvent('esx_mafiajob:putInVehicle')
-AddEventHandler('esx_mafiajob:putInVehicle', function()
+RegisterNetEvent('esx_bikerjob:putInVehicle')
+AddEventHandler('esx_bikerjob:putInVehicle', function()
 
   local playerPed = GetPlayerPed(-1)
   local coords    = GetEntityCoords(playerPed)
@@ -376,8 +376,8 @@ end)
 
 -- tirar do carro
 
-RegisterNetEvent('esx_mafiajob:OutVehicle')
-AddEventHandler('esx_mafiajob:OutVehicle', function(t)
+RegisterNetEvent('esx_bikerjob:OutVehicle')
+AddEventHandler('esx_bikerjob:OutVehicle', function(t)
   local ped = GetPlayerPed(t)
   ClearPedTasksImmediately(ped)
   plyPos = GetEntityCoords(GetPlayerPed(-1),  true)
