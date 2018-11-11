@@ -4,12 +4,13 @@
 
 # Próxima atualização
 - Carteirinha do EMS - Pensar em função
-Função simples EMS p/ vida:
 
-    local player = PlayerId()  
-    local health = GetEntityHealth(playerPed)
-    local newHealth = math.min(maxHealth , math.floor(health + maxHealth/8))
-    SetEntityHealth(playerPed, newHealth)
+Função simples EMS p/ vida
+
+    	local player = PlayerId()  
+    	local health = GetEntityHealth(playerPed)
+    	local newHealth = math.min(maxHealth , math.floor(health + maxHealth/8))
+    	SetEntityHealth(playerPed, newHealth)
 
 
 - Binóculos
