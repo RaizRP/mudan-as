@@ -13,7 +13,10 @@ Função simples EMS p/ vida:
 
 
 - Binóculos
-- Refazer SQL da cadeia - NUL = DEFAULT
+- Refazer SQL da cadeia - 
+	
+		NUL = DEFAULT
+	
 - Retirar a stamina padrão:
 
 		Citizen.CreateThread( function()
